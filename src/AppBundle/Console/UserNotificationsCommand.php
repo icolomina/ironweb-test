@@ -37,7 +37,7 @@ class UserNotificationsCommand extends ContainerAwareCommand
             ->setSubject('Hello Email')
             ->setFrom('send@example.com')
             ->setTo('recipient@example.com')
-            ->setBody($this->renderView('AppBundle::NotificationEmail.html.twig', array('notifications' => $notifications)), 'text/html')
+            ->setBody($this->getContainer()->get('templating')->renderView('AppBundle::NotificationEmail.html.twig', array('notifications' => $notifications)), 'text/html')
 
         ;
 

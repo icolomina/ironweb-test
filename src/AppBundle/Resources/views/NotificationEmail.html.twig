@@ -1,0 +1,10 @@
+<h3>You have the following notifications!</h3>
+
+{% for notification in notifications %}
+    <p>{{ notification.getText() }}</p>
+    <hr />
+{% endfor %}
+
+<p>Best Regards</p>
+
+<p>Iron Staff</p>

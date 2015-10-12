@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block stylesheets %}
+        <link href="{{ asset('bower_components/bootstrap-css/css/bootstrap.min.css') }}" rel="stylesheet" />
+    {% endblock %}
+
+    {% block popunders %}{% endblock %}
+</head>
+<body>
+
+<div class="container">
+<div class="col-md-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">New Article</div>
+        <div class="panel-body">
+            {% form_theme form 'bootstrap_3_layout.html.twig' %}
+            <form accept-charset="UTF-8" action="{{ path('article_create') }}" class="form-horizontal" method="post" novalidate="novalidate">
+                {{ form(form) }}
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+
+
+</body>
+</html>

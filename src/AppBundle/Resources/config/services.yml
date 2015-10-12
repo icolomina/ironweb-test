@@ -1,0 +1,32 @@
+services:
+    app.tokens.action_listener:
+        class: AppBundle\Event\ApiListener
+        arguments: ["%tokens%"]
+        tags:
+            - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
+
+    api.exception.exception_listener:
+            class: AppBundle\Event\ExceptionListener
+            tags:
+                - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }
+
+    api_create.input_data_validator:
+        class: AppBundle\Api\ApiRequestCreateArticleValidator
+        lazy: true
+        tags:
+          -  { name: api.input_data_validator, alias: create }
+
+    api_answer.input_data_validator:
+        class: AppBundle\Api\ApiRequestAnswerArticleValidator
+        lazy: true
+        tags:
+          -  { name: api.input_data_validator, alias: answer }
+
+    api_rate.input_data_validator:
+        class: AppBundle\Api\ApiRequestRateArticleValidator
+        lazy: true
+        tags:
+          -  { name: api.input_data_validator, alias: rate }
+
+    api.input_data_validator_collection:
+        class: PhpCollection\Map

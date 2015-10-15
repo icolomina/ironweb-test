@@ -36,7 +36,7 @@ class UserNotificationsCommand extends ContainerAwareCommand
         $message = \Swift_Message::newInstance()
             ->setSubject('Hello Email')
             ->setFrom('send@example.com')
-            ->setTo('recipient@example.com')
+            ->setTo($input->getArgument('email'))
             ->setBody($this->getContainer()->get('templating')->render('AppBundle::NotificationEmail.html.twig', array('notifications' => $notifications)), 'text/html')
 
         ;
